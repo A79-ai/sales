@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmpUp - Help Your Reps Close Deals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: white;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #5C4EE5;
+        }
+        
+        .logo {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #5C4EE5 0%, #4338CA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #4B5563;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .problem-statement {
+            background: #FEF2F2;
+            border-left: 4px solid #EF4444;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #7F1D1D;
+        }
+        
+        .solution-statement {
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0E7FF 100%);
+            border-left: 4px solid #5C4EE5;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        h2 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .ai-team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .ai-member {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ai-member:hover {
+            border-color: #5C4EE5;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(92, 78, 229, 0.1);
+        }
+        
+        .ai-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #5C4EE5, #4338CA);
+        }
+        
+        .ai-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+            border: 3px solid #E0E7FF;
+            object-fit: cover;
+        }
+        
+        .ai-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #5C4EE5;
+            margin-bottom: 5px;
+        }
+        
+        .ai-role {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 10px;
+        }
+        
+        .ai-description {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .ai-impact {
+            font-size: 13px;
+            font-weight: 600;
+            color: #059669;
+            font-style: italic;
+        }
+        
+        .daily-reality {
+            background: #F9FAFB;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .reality-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .reality-time {
+            font-weight: 700;
+            color: #5C4EE5;
+            margin-right: 15px;
+            min-width: 100px;
+        }
+        
+        .reality-desc {
+            color: #374151;
+            font-size: 15px;
+        }
+        
+        .testimonial {
+            background: white;
+            border-left: 4px solid #5C4EE5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-quote {
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: #5C4EE5;
+            font-size: 14px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0E7FF 100%);
+            border-radius: 12px;
+            border: 1px solid #CBD5E1;
+        }
+        
+        .metric-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #5C4EE5;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            color: #4B5563;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #E5E7EB;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #5C4EE5;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #E0E7FF;
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-desc {
+            color: #4B5563;
+            font-size: 14px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefit-icon {
+            font-size: 24px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content {
+            flex: 1;
+        }
+        
+        .benefit-title {
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+            font-size: 15px;
+        }
+        
+        .benefit-desc {
+            color: #4B5563;
+            font-size: 13px;
+        }
+        
+        .roi-section {
+            background: linear-gradient(135deg, #5C4EE5 0%, #4338CA 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .roi-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .roi-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .roi-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .roi-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .roi-total {
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-title {
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 10px;
+        }
+        
+        .warning-item {
+            color: #78350F;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .warning-item::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+        }
+        
+        .cta-section {
+            background: #F9FAFB;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .cta-subtitle {
+            font-size: 16px;
+            color: #4B5563;
+            margin-bottom: 30px;
+        }
+        
+        .cta-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-option {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #E5E7EB;
+        }
+        
+        .cta-option-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .cta-option-title {
+            font-weight: 700;
+            color: #5C4EE5;
+            margin-bottom: 5px;
+        }
+        
+        .cta-option-desc {
+            font-size: 13px;
+            color: #4B5563;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .contact-info p {
+            font-size: 16px;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #E5E7EB;
+        }
+        
+        .footer-tagline {
+            font-size: 18px;
+            font-weight: 600;
+            color: #5C4EE5;
+            margin-bottom: 10px;
+        }
+        
+        .footer-note {
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        @media print {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">AmpUp</div>
+            <h1>Help Your Reps Close Deals</h1>
+            <div class="subtitle">Stop Drowning in Tools. Start Closing Deals.</div>
+        </div>
+        
+        <div class="problem-statement">
+            Your reps waste 73% of their day on busywork across 10+ tools. Meanwhile, 58% of winnable deals die from missed signals. Only 43% of reps hit quota.
+        </div>
+        
+        <div class="solution-statement">
+            AmpUp gives you an AI sales team that eliminates the chaos and closes 47% more deals.
+        </div>
+        
+        <h2>Your AI Sales Team (Available 24/7)</h2>
+        
+        <div class="ai-team">
+            <div class="ai-member">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&facepad=2" alt="Alex" class="ai-avatar">
+                <div class="ai-name">Alex</div>
+                <div class="ai-role">Deal Intelligence</div>
+                <div class="ai-description">Knows which deals will close and which need saving. Spots risks 3 weeks early.</div>
+                <div class="ai-impact">Impact: 34% higher close rates</div>
+            </div>
+            
+            <div class="ai-member">
+                <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop&facepad=2" alt="Maya" class="ai-avatar">
+                <div class="ai-name">Maya</div>
+                <div class="ai-role">Meeting Mastery</div>
+                <div class="ai-description">Turns 3-hour prep into 15 minutes. Complete briefs + AI roleplay for tough objections.</div>
+                <div class="ai-impact">Impact: 67% higher meeting success</div>
+            </div>
+            
+            <div class="ai-member">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&facepad=2" alt="Jordan" class="ai-avatar">
+                <div class="ai-name">Jordan</div>
+                <div class="ai-role">Pipeline Prophet</div>
+                <div class="ai-description">X-ray vision into your pipeline. Shows exactly why deals are stuck and how to unstick them.</div>
+                <div class="ai-impact">Impact: 91% forecast accuracy</div>
+            </div>
+            
+            <div class="ai-member">
+                <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=400&fit=crop&facepad=2" alt="Casey" class="ai-avatar">
+                <div class="ai-name">Casey</div>
+                <div class="ai-role">Skills Accelerator</div>
+                <div class="ai-description">Clones your top performer's approach and scales it to everyone instantly.</div>
+                <div class="ai-impact">Impact: 67% faster ramp time</div>
+            </div>
+        </div>
+        
+        <h2>Your New Daily Reality</h2>
+        
+        <div class="daily-reality">
+            <div class="reality-item">
+                <div class="reality-time">Morning:</div>
+                <div class="reality-desc">Open AmpUp to see your 3 highest-impact actions. No more guessing.</div>
+            </div>
+            <div class="reality-item">
+                <div class="reality-time">Before Meetings:</div>
+                <div class="reality-desc">15-minute prep with complete intelligence from all your tools. Practice objections with AI.</div>
+            </div>
+            <div class="reality-item">
+                <div class="reality-time">During Deals:</div>
+                <div class="reality-desc">Get alerts when deals go dark. Know exactly how to save them.</div>
+            </div>
+            <div class="reality-item">
+                <div class="reality-time">Results:</div>
+                <div class="reality-desc">47% more deals closed. Leave on time. Hit quota.</div>
+            </div>
+        </div>
+        
+        <h2>Real Results from Real Teams</h2>
+        
+        <div class="testimonial">
+            <div class="testimonial-quote">
+                "My reps went from drowning in 20 browser tabs to having 3 clear actions each morning. They're closing 47% more deals."
+            </div>
+            <div class="testimonial-author">— VP Sales, Series B SaaS</div>
+        </div>
+        
+        <div class="testimonial">
+            <div class="testimonial-quote">
+                "We hit 94% team quota last quarter. I can finally coach all 25 reps effectively, not just my top 3."
+            </div>
+            <div class="testimonial-author">— Sales Manager, Enterprise Software</div>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-number">73%</span>
+                <span class="metric-label">Less Busywork</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">47%</span>
+                <span class="metric-label">More Deals Closed</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">89%</span>
+                <span class="metric-label">Team Quota Attainment</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">15 min</span>
+                <span class="metric-label">Meeting Prep (vs 3 hrs)</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-number">3.2x</span>
+                <span class="metric-label">ROI in 6 Months</span>
+            </div>
+        </div>
+        
+        <h2>How It Works</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-title">Week 1</div>
+                <div class="timeline-desc">Connect your tools. Import your sales process. Tell AmpUp what "great" looks like.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">Week 2</div>
+                <div class="timeline-desc">Each rep gets their AI team. Daily priorities appear. Meeting briefs auto-generate.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">Week 3</div>
+                <div class="timeline-desc">Watch deals close that would have been lost. Top performer tactics spread instantly.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">Month 2+</div>
+                <div class="timeline-desc">AI gets smarter daily. Your competitive advantage compounds.</div>
+            </div>
+        </div>
+        
+        <h2>Why Leaders Choose AmpUp</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">🚀</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Fast</div>
+                    <div class="benefit-desc">Live in 2 weeks, not 6 months. No consultants needed.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🧠</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Built by Sellers</div>
+                    <div class="benefit-desc">Founded by team that scaled ThoughtSpot to $150M.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🔒</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Secure</div>
+                    <div class="benefit-desc">SOC 2 certified. Your data never trains competitors.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">📈</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Proven ROI</div>
+                    <div class="benefit-desc">$127M average additional revenue per 100-rep team.</div>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🔌</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Connected</div>
+                    <div class="benefit-desc">Integrates with Salesforce, HubSpot, Gong, Outreach, and 50+ tools.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="roi-section">
+            <div class="roi-title">The Math Is Simple</div>
+            <div style="font-size: 16px; margin-bottom: 25px; opacity: 0.95;">For a 50-rep team:</div>
+            <div class="roi-grid">
+                <div class="roi-item">
+                    <div class="roi-value">$2.4M</div>
+                    <div class="roi-label">Productivity gain from less busywork</div>
+                </div>
+                <div class="roi-item">
+                    <div class="roi-value">$47M</div>
+                    <div class="roi-label">Revenue increase from more deals closed</div>
+                </div>
+                <div class="roi-item">
+                    <div class="roi-value">$800K</div>
+                    <div class="roi-label">Saved on faster onboarding</div>
+                </div>
+            </div>
+            <div class="roi-total">Total Year 1 Impact: $50M</div>
+        </div>
+        
+        <div class="warning-box">
+            <div class="warning-title">Every day without AmpUp costs you:</div>
+            <div class="warning-item">Winnable deals dying from missed signals</div>
+            <div class="warning-item">Reps wasting 3 hours daily on admin</div>
+            <div class="warning-item">Top performer knowledge walking out the door</div>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-title">See AmpUp Transform Your Sales in 30 Minutes</div>
+            <div class="cta-subtitle">We'll show you exactly how AmpUp works with YOUR deals, YOUR process, YOUR challenges.</div>
+            
+            <div class="cta-options">
+                <div class="cta-option">
+                    <div class="cta-option-icon">🚀</div>
+                    <div class="cta-option-title">14-Day Pilot</div>
+                    <div class="cta-option-desc">Test with 10 reps, full access</div>
+                </div>
+                <div class="cta-option">
+                    <div class="cta-option-icon">📞</div>
+                    <div class="cta-option-title">30-Minute Demo</div>
+                    <div class="cta-option-desc">See it work on your scenarios</div>
+                </div>
+                <div class="cta-option">
+                    <div class="cta-option-icon">📊</div>
+                    <div class="cta-option-title">Free Assessment</div>
+                    <div class="cta-option-desc">Analyze your opportunity</div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <p><strong>Contact:</strong></p>
+                <p>📧 sales@ampup.ai | 🌐 www.ampup.ai | 📞 (415) 555-0142</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-tagline">AmpUp: Where Every Rep Becomes a Closing Machine</div>
+            <div class="footer-note">Join 200+ elite sales teams already using AmpUp to dominate their markets.</div>
+        </div>
+    </div>
+</body>
+</html>
